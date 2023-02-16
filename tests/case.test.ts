@@ -14,9 +14,13 @@ describe("fibonacci - parameter validation", () => {
     expect(() => Fibonacci(-2, 11)).toThrowError("function parameters must be greater than 0!");
   });
 
-  test("Infinity number", () => {
-    expect(() => Fibonacci(Infinity, 12)).toThrowError("function parameters can't be Infinity!");
-    expect(() => Fibonacci(4, Infinity)).toThrowError("function parameters can't be Infinity!");
+  test("numbers that cause runtime crashes", () => {
+    expect(() => Fibonacci(4, Infinity)).toThrowError(
+      "parameters bigger than 110_000_000 will cause crashes"
+    );
+    expect(() => Fibonacci(1, 500_000_000)).toThrowError(
+      "parameters bigger than 110_000_000 will cause crashes"
+    );
   });
 
   test("checks if 'end' >= 'start'?", () => {

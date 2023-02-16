@@ -3,12 +3,10 @@ export default function Fibonacci(start: number, end: number) {
     throw new Error("function parameters must be number!");
   }
 
-  if (start === Infinity || end === Infinity) {
-    throw new Error("function parameters can't be Infinity!");
+  if (start > 110_000_000 || end > 110_000_000) {
+    throw new Error("parameters bigger than 110_000_000 will cause crashes");
   }
 
-  if (end > 1476) {
-    console.warn("numbers after the 1476th will be Infinity!");
   }
 
   if (start < 1 || end < 1) {
@@ -17,6 +15,9 @@ export default function Fibonacci(start: number, end: number) {
 
   if (start - end > 0) {
     throw new Error("'end' can't be lower than 'start'!");
+  
+  if (end > 1476) {
+    console.warn("numbers after the 1476th will be Infinity!");
   }
 
   const ans: number[] = [];
