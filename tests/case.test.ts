@@ -10,8 +10,9 @@ describe("fibonacci - parameter validation", () => {
   });
 
   test("positive parameter", () => {
-    expect(() => Fibonacci(4, 0)).toThrowError("function parameters must be greater than 0!");
-    expect(() => Fibonacci(-2, 11)).toThrowError("function parameters must be greater than 0!");
+    expect(Fibonacci(0, 0)).toBeTruthy();
+    expect(() => Fibonacci(4, -5)).toThrowError("function parameters can not be negative!");
+    expect(() => Fibonacci(-2, 11)).toThrowError("function parameters can not be negative!");
   });
 
   test("numbers that cause runtime crashes", () => {
@@ -25,7 +26,7 @@ describe("fibonacci - parameter validation", () => {
 
   test("checks if 'end' >= 'start'?", () => {
     expect(Fibonacci(4, 4)).toBeTruthy();
-    expect(() => Fibonacci(5, 2)).toThrowError("'end' can't be lower than 'start'!");
+    expect(() => Fibonacci(5, 2)).toThrowError("'end' can not be lower than 'start'!");
   });
 });
 
@@ -39,10 +40,14 @@ describe("fibonacci - functionality", () => {
   });
 
   test("calculation test 2", () => {
-    expect(Fibonacci(1, 10)).eql([1, 1, 2, 3, 5, 8, 13, 21, 34, 55]);
+    expect(Fibonacci(0, 10)).eql([1, 1, 2, 3, 5, 8, 13, 21, 34, 55]);
   });
 
   test("calculation test 3", () => {
+    expect(Fibonacci(1, 10)).eql([1, 1, 2, 3, 5, 8, 13, 21, 34, 55]);
+  });
+
+  test("calculation test 4", () => {
     expect(Fibonacci(500, 500)).eql([1.394232245616977e104]);
   });
 

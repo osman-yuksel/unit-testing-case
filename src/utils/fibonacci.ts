@@ -7,14 +7,13 @@ export default function Fibonacci(start: number, end: number) {
     throw new Error("parameters bigger than 110_000_000 will cause crashes");
   }
 
+  if (start < 0 || end < 0) {
+    throw new Error("function parameters can not be negative!");
   }
-
-  if (start < 1 || end < 1) {
-    throw new Error("function parameters must be greater than 0!");
-  }
-
+  
   if (start - end > 0) {
-    throw new Error("'end' can't be lower than 'start'!");
+    throw new Error("'end' can not be lower than 'start'!");
+  }
   
   if (end > 1476) {
     console.warn("numbers after the 1476th will be Infinity!");
@@ -31,5 +30,5 @@ export default function Fibonacci(start: number, end: number) {
     n1 = n2;
     n2 = nextN;
   }
-  return ans.slice(start - 1);
+  return ans.slice(start === 0 ? 0 : start - 1);
 }
