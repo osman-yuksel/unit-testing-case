@@ -51,6 +51,10 @@ describe("fibonacci - functionality", () => {
     expect(Fibonacci(500, 500)).eql([1.394232245616977e104]);
   });
 
+  test("Math.floor() behaviour, E.g: 2.9 will be treated as 2", () => {
+    expect(Fibonacci(2.9, 5.6)).eql([1, 2, 3, 5]);
+  });
+
   test("Number.MAX_VALUE", () => {
     const spy = vi.spyOn(console, "warn");
     Fibonacci(2, 1477);
